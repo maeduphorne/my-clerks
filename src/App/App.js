@@ -1,10 +1,17 @@
 import './App.css';
 import { fetchRandomUser, fetchRandomUsers } from '../apiCalls'
+import React, { useEffect, useState } from 'react'
 
 function App() {
 
   const [userInfo, setUserInfo] = useState([]);
   const [userInfoError, setUserInfoError] = useState('');
+
+  useEffect(() => {
+    fetchRandomUsers()
+    .then((data) => console.log(data))
+    .catch(error => setUserInfoError('Unable to find a user. Please refresh the page or try again later.'))
+  }, [])
 
   return (
     <div className="App">
