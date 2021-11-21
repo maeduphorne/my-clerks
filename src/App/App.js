@@ -8,6 +8,8 @@ function App() {
   const [userInfo, setUserInfo] = useState([]);
   const [userInfoError, setUserInfoError] = useState('');
   const [isLoading, setIsLoading] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentCard, setCurrentCard] = useState({})
 
   // Original fetch call for 3 users
   useEffect(() => {
@@ -60,11 +62,37 @@ function App() {
     .catch(error => setUserInfoError('Unable to find a user. Please refresh the page or try again later.'))
   }
 
+  //BUTTONS
+  // when userInfo changes, set the current card to the currentIndex of the array 
+  useEffect(() => {
+    setCurrentCard(userInfo[currentIndex])
+  }, [userInfo, !isLoading])
+
+  const handleNextClick = () => {
+    setCurrentIndex(currentIndex + 1)
+    if(userInfo.length <= currentIndex){
+      getMoreUserInfo()
+      setCurrentCard(userInfo[currentIndex])
+    }
+    setCurrentCard(userInfo[currentIndex])
+
+  //NEXT BTN function 
+  // carousel index - starts at 0 on initial page load
+  // with each click of the next button, 1 is added to the index
+  // display card at current index
+  // if at the end of the userInfo array, fetch more users
+  // return to view of card at previous index
+  }
+
   return (
     <div className="App">
-      My Clerks
-      {userInfo && !isLoading && <Carousel userInfo={userInfo} fetchUsers={getMoreUserInfo}/>}
+      <h1>My Clerks</h1>
+      <section className="carousel-and-btns">
+      <button className="prev">PREV</button>
+      {currentCard && !isLoading && <Carousel currentCard={currentCard} />}
       {isLoading && 'Loading...'}
+      <button className="next" onClick={() => handleNextClick()}>NEXT</button>
+      </section>
     </div>
   );
 }

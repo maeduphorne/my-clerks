@@ -2,31 +2,8 @@ import './Carousel.css'
 import UserProfileCard from '../UserProfileCard/UserProfileCard'
 import { useState, useEffect } from 'react';
 
-const Carousel = ({ userInfo, fetchUsers }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [currentCard, setCurrentCard] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
-  
-  useEffect(() => {
-    setCurrentCard(userInfo[currentIndex])
-  }, [])
-
-  const handleNextClick = () => {
-    setCurrentIndex(currentIndex + 1)
-    if(userInfo.length <= currentIndex){
-      fetchUsers()
-      setCurrentCard(userInfo[currentIndex])
-    }
-    setCurrentCard(userInfo[currentIndex])
-
-  //NEXT BTN function 
-  // carousel index - starts at 0 on initial page load
-  // with each click of the next button, 1 is added to the index
-  // display card at current index
-  // if at the end of the userInfo array, fetch more users
-  // return to view of card at previous index
-  }
-
+const Carousel = ({ currentCard }) => {
+console.log(currentCard)
   // const cards = currentCard.map((info) => {
   //   return (
   //     <UserProfileCard key={info.id} userInfo={info}/>
@@ -35,11 +12,7 @@ const Carousel = ({ userInfo, fetchUsers }) => {
 
   return(
     <section className="carousel">
-      <button className="prev">PREV</button>
-      <div className="profile-card-container">
-        {currentCard && !isLoading && <UserProfileCard key={currentCard.id} userInfo={currentCard}/>}
-      </div>
-      <button className="next" onClick={() => handleNextClick()}>NEXT</button>
+      <UserProfileCard key={currentCard.id} userInfo={currentCard}/>
     </section>
   )
 
