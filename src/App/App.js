@@ -7,6 +7,7 @@ function App() {
   const [userInfo, setUserInfo] = useState([]);
   const [userInfoError, setUserInfoError] = useState('');
 
+  // Original fetch call for 9 users
   useEffect(() => {
     let userData;
     fetchRandomUsers()
