@@ -4,6 +4,7 @@ import { fetchRandomUser, fetchRandomUsers } from '../apiCalls'
 function App() {
 
   const [userInfo, setUserInfo] = useState([]);
+  const [userInfoError, setUserInfoError] = useState('');
 
   return (
     <div className="App">
