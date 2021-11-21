@@ -2,24 +2,43 @@ import './Carousel.css'
 import UserProfileCard from '../UserProfileCard/UserProfileCard'
 import { useState, useEffect } from 'react';
 
-const Carousel = ({ userInfo, fetchUsers }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+const Carousel = ({ userInfo, fetchUsers, currentIndex, setCurrentIndex }) => {
+  // const [currentIndex, setCurrentIndex] = useState(0)
   const [currentCard, setCurrentCard] = useState({})
   const [isLoading, setIsLoading] = useState(false)
+  let savedIndex;
+  const setLocalStorage = () => {
+    localStorage.setItem('currentIndex', savedIndex)
+  }
+
+  const getLocalStorage = () => {
+    savedIndex = localStorage.getItem('currentIndex')
+    // if(!previousIndex === 0) {
+    //   setCurrentIndex(previousIndex)
+    // }
+  }
 
   useEffect(() => {
-    // setIsLoading(true)
+    // getLocalStorage()
     setCurrentCard(userInfo[currentIndex])
-    // setIsLoading(false)
   }, [])
 
   // useEffect(() => {
-  //   setCurrentCard(userInfo[currentIndex])
-  // }, [!isLoading])
+  //   setLocalStorage()
+  // }, [currentIndex])
 
   const handleNextClick = () => {
     setCurrentIndex(currentIndex + 1)
-    checkForFetch()
+    savedIndex = currentIndex
+    setLocalStorage()
+    console.log('savedIndex pre fetch', savedIndex)
+    // checkForFetch()
+    if(userInfo.length <= currentIndex){
+      fetchUsers()
+      // setCurrentCard(userInfo[currentIndex])
+    }
+    getLocalStorage()
+    console.log('savedIndex post fetch', savedIndex)
     setCurrentCard(userInfo[currentIndex])
     
     // currentCard = userInfo[currentIndex]
@@ -37,14 +56,12 @@ const Carousel = ({ userInfo, fetchUsers }) => {
   //   )
   // })
 
-  const checkForFetch = () => {
-    console.log('userInfo.length', userInfo.length)
-    console.log('currentIndex', currentIndex)
-    if(userInfo.length <= currentIndex){
-      fetchUsers()
-      setCurrentCard(userInfo[currentIndex])
-    }
-  }
+  // const checkForFetch = () => {
+  //   if(userInfo.length <= currentIndex){
+  //     fetchUsers()
+  //     setCurrentCard(userInfo[currentIndex])
+  //   }
+  // }
 
   return(
     <section className="carousel">
