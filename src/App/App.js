@@ -20,18 +20,18 @@ export default App;
 
   // App should display:
     // Header
-    // Dropdown Menu (color selector)
+    // COLORSELECTOR Menu (color selector)
     // Carousel
 
   // App hold fetch method and passed as a prop to carousel (to update userInfo)
     // write reusable pieces of method - 
     // need one for initial fetch and need one thatruns if there is already users in state (either from prev. fetch or localstorage)
       // might be able to be one method with a conditional?
-  // App holds method to select the color from the dropdown and passed this as a prop to the dropdown component
+  // App holds method to select the color from the COLORSELECTOR and passed this as a prop to the COLORSELECTOR component
   // on change of state, local storage is set
   // on page load, any info from localstorage is fetched first
 
-  
+
 // USERPROFILECARD component
   // holds basic structure of the user card
   //takes in color prop to add to inline style to change background color
@@ -64,7 +64,7 @@ export default App;
       //DESKTOP version - on click, the user should be able to see the 3 cards at the previous 3 indices
 
 
-// DROPDOWN component
+// COLORSELECTOR component
   // Takes in prop of method to select and update color
   // holds an array of colors to select from
   // maps through color names to create options for each color
