@@ -75,7 +75,6 @@ function App() {
       setCurrentCard(userInfo[currentIndex])
     }
     setCurrentCard(userInfo[currentIndex])
-
   //NEXT BTN function 
   // carousel index - starts at 0 on initial page load
   // with each click of the next button, 1 is added to the index
