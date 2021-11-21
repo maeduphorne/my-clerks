@@ -9,7 +9,7 @@ function App() {
   const [userInfoError, setUserInfoError] = useState('');
   const [isLoading, setIsLoading] = useState(false)
 
-  // Original fetch call for 9 users
+  // Original fetch call for 3 users
   useEffect(() => {
     let userData;
     setIsLoading(true);
@@ -38,10 +38,32 @@ function App() {
     }
   }, [userInfo])
 
+  const getMoreUserInfo = () => {
+    let userData;
+    setIsLoading(true)
+    fetchRandomUser()
+    .then((data) => {
+      userData = data.results.map(userObj => {
+        const newObj = {}
+        newObj.id = userObj.login.uuid;
+        newObj.firstName = userObj.name.first;
+        newObj.lastName = userObj.name.last;
+        newObj.email = userObj.email;
+        newObj.phone = userObj.phone;
+        newObj.photo = userObj.picture.large;
+        newObj.city = userObj.location.city;
+        newObj.country = userObj.location.country;
+        return newObj
+        })
+      setUserInfo([...userInfo, ...userData])
+    })
+    .catch(error => setUserInfoError('Unable to find a user. Please refresh the page or try again later.'))
+  }
+
   return (
     <div className="App">
       My Clerks
-      {userInfo && !isLoading && <Carousel userInfo={userInfo}/>}
+      {userInfo && !isLoading && <Carousel userInfo={userInfo} fetchUsers={getMoreUserInfo}/>}
       {isLoading && 'Loading...'}
     </div>
   );
