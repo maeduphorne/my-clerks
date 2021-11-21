@@ -2,6 +2,9 @@ import './App.css';
 import { fetchRandomUser, fetchRandomUsers } from '../apiCalls'
 
 function App() {
+
+  const [userInfo, setUserInfo] = useState([]);
+
   return (
     <div className="App">
       My Clerks
