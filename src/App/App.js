@@ -7,10 +7,12 @@ function App() {
 
   const [userInfo, setUserInfo] = useState([]);
   const [userInfoError, setUserInfoError] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
 
   // Original fetch call for 9 users
   useEffect(() => {
     let userData;
+    setIsLoading(true);
     fetchRandomUsers()
     .then((data) => {
       userData = data.results.map(userObj => {
@@ -30,10 +32,17 @@ function App() {
     .catch(error => setUserInfoError('Unable to find a user. Please refresh the page or try again later.'))
   }, [])
 
+  useEffect(() => {
+    if(userInfo.length >= 3) {
+      setIsLoading(false)
+    }
+  }, [userInfo])
+
   return (
     <div className="App">
       My Clerks
-      <Carousel userInfo={userInfo}/>
+      {userInfo && !isLoading && <Carousel userInfo={userInfo}/>}
+      {isLoading && 'Loading...'}
     </div>
   );
 }
