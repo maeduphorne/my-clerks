@@ -2,7 +2,7 @@ import './Carousel.css'
 import UserProfileCard from '../UserProfileCard/UserProfileCard'
 import { useState, useEffect } from 'react';
 
-const Carousel = ({ userInfo }) => {
+const Carousel = ({ userInfo, fetchUsers }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentCard, setCurrentCard] = useState({})
   const [isLoading, setIsLoading] = useState(false)
@@ -18,9 +18,10 @@ const Carousel = ({ userInfo }) => {
   // }, [!isLoading])
 
   const handleNextClick = () => {
-    console.log('I am clicking')
     setCurrentIndex(currentIndex + 1)
+    checkForFetch()
     setCurrentCard(userInfo[currentIndex])
+    
     // currentCard = userInfo[currentIndex]
   //NEXT BTN function 
   // carousel index - starts at 0 on initial page load
@@ -35,6 +36,15 @@ const Carousel = ({ userInfo }) => {
   //     <UserProfileCard key={info.id} userInfo={info}/>
   //   )
   // })
+
+  const checkForFetch = () => {
+    console.log('userInfo.length', userInfo.length)
+    console.log('currentIndex', currentIndex)
+    if(userInfo.length <= currentIndex){
+      fetchUsers()
+      setCurrentCard(userInfo[currentIndex])
+    }
+  }
 
   return(
     <section className="carousel">
