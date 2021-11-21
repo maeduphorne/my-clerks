@@ -5,6 +5,12 @@ const Carousel = ({ userInfo }) => {
 
   const handleNextClick = () => {
     console.log('I am clicking')
+  //NEXT BTN function 
+  // carousel index - starts at 0 on initial page load
+  // with each click of the next button, 1 is added to the index
+  // display card at current index
+  // if at the end of the userInfo array, fetch more users
+  // return to view of card at previous index
   }
 
   const cards = userInfo.map((info) => {
