@@ -1,16 +1,26 @@
 import './Carousel.css'
 import UserProfileCard from '../UserProfileCard/UserProfileCard'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Carousel = ({ userInfo }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentCard, setCurrentCard] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
 
-  
+  useEffect(() => {
+    // setIsLoading(true)
+    setCurrentCard(userInfo[currentIndex])
+    // setIsLoading(false)
+  }, [])
+
+  // useEffect(() => {
+  //   setCurrentCard(userInfo[currentIndex])
+  // }, [!isLoading])
 
   const handleNextClick = () => {
     console.log('I am clicking')
     setCurrentIndex(currentIndex + 1)
+    setCurrentCard(userInfo[currentIndex])
     // currentCard = userInfo[currentIndex]
   //NEXT BTN function 
   // carousel index - starts at 0 on initial page load
@@ -30,9 +40,7 @@ const Carousel = ({ userInfo }) => {
     <section className="carousel">
       <button className="prev">PREV</button>
       <div className="profile-card-container">
-        {/* {currentCard} */}
-        {/* <UserProfileCard key={currentCard.id} userInfo={currentCard}/> */}
-        CARD CONTAINER
+        {currentCard && !isLoading && <UserProfileCard key={currentCard.id} userInfo={currentCard}/>}
       </div>
       <button className="next" onClick={() => handleNextClick()}>NEXT</button>
     </section>
