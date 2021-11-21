@@ -1,7 +1,9 @@
 import './Carousel.css'
 import UserProfileCard from '../UserProfileCard/UserProfileCard'
+import { useState } from 'react';
 
 const Carousel = ({ userInfo }) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   const handleNextClick = () => {
     console.log('I am clicking')
