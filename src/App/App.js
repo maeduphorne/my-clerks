@@ -41,7 +41,7 @@ function App() {
   const getMoreUserInfo = () => {
     let userData;
     setIsLoading(true)
-    fetchRandomUser()
+    fetchRandomUsers()
     .then((data) => {
       userData = data.results.map(userObj => {
         const newObj = {}
