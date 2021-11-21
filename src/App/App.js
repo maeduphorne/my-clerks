@@ -8,8 +8,23 @@ function App() {
   const [userInfoError, setUserInfoError] = useState('');
 
   useEffect(() => {
+    let userData;
     fetchRandomUsers()
-    .then((data) => console.log(data))
+    .then((data) => {
+      userData = data.results.map(userObj => {
+        const newObj = {}
+        newObj.id = userObj.login.uuid;
+        newObj.firstName = userObj.name.first;
+        newObj.lastName = userObj.name.last;
+        newObj.email = userObj.email;
+        newObj.phone = userObj.phone;
+        newObj.photo = userObj.picture.large;
+        newObj.city = userObj.location.city;
+        newObj.country = userObj.location.country;
+        return newObj
+        })
+      setUserInfo(userData)
+    })
     .catch(error => setUserInfoError('Unable to find a user. Please refresh the page or try again later.'))
   }, [])
 
