@@ -11,7 +11,7 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentCard, setCurrentCard] = useState({})
   const [selectedColor, setSelectedColor] = useState({})
-  
+
   // Original fetch call for 3 users
   useEffect(() => {
     let userData;
@@ -89,6 +89,14 @@ function App() {
     setCurrentCard(userInfo[currentIndex])
   }
 
+  const colors = [
+    {name: 'Navy', hex: '#29335C', id: 1}, 
+    {name: 'Green', hex: '#A8C686', id: 2},
+    {name: 'Orange', hex: '#F3A712', id: 3},
+    {name: 'Red', hex: '#E4572E', id: 4},
+    {name: 'Purple', hex: '#B497D6', id: 5},
+  ]
+  
   return (
     <div className="App">
       <h1>My Clerks</h1>
