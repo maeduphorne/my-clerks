@@ -1,6 +1,7 @@
 import './App.css';
 import { fetchRandomUser, fetchRandomUsers } from '../apiCalls'
 import React, { useEffect, useState } from 'react'
+import Carousel from '../Carousel/Carousel';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
   return (
     <div className="App">
       My Clerks
+      <Carousel userInfo={userInfo}/>
     </div>
   );
 }
