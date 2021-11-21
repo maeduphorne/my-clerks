@@ -3,7 +3,6 @@ import UserProfileCard from '../UserProfileCard/UserProfileCard'
 import { useState, useEffect } from 'react';
 
 const Carousel = ({ currentCard }) => {
-console.log(currentCard)
   // const cards = currentCard.map((info) => {
   //   return (
   //     <UserProfileCard key={info.id} userInfo={info}/>

@@ -84,11 +84,16 @@ function App() {
   // return to view of card at previous index
   }
 
+  const handlePrevClick = () => {
+    setCurrentIndex(currentIndex - 1)
+    setCurrentCard(userInfo[currentIndex])
+  }
+
   return (
     <div className="App">
       <h1>My Clerks</h1>
       <section className="carousel-and-btns">
-      <button className="prev">PREV</button>
+      <button className="prev" onClick={() => handlePrevClick()}>PREV</button>
       {currentCard && !isLoading && <Carousel currentCard={currentCard} />}
       {isLoading && 'Loading...'}
       <button className="next" onClick={() => handleNextClick()}>NEXT</button>
