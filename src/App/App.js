@@ -1,4 +1,5 @@
 import './App.css';
+import { fetchRandomUser, fetchRandomUsers } from '../apiCalls'
 
 function App() {
   return (
