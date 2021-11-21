@@ -10,7 +10,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentCard, setCurrentCard] = useState({})
-
+  const [selectedColor, setSelectedColor] = useState({})
+  
   // Original fetch call for 3 users
   useEffect(() => {
     let userData;
