@@ -5,7 +5,7 @@ const Carousel = ({ userInfo }) => {
 
   const cards = userInfo.map((info) => {
     return (
-      <UserProfileCard userInfo={info}/>
+      <UserProfileCard key={info.id} userInfo={info}/>
     )
   })
 
