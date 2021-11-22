@@ -71,7 +71,7 @@ function App() {
 
   const handleNextClick = (e) => {
     e.preventDefault()
-    if(userInfo.length === currentIndex + 1){
+    if(userInfo.length === currentIndex + 1 && userInfo.length <= 97){
       getMoreUserInfo()
     }
     setCurrentCard(userInfo[currentIndex + 1])
@@ -80,8 +80,8 @@ function App() {
 
   const handlePrevClick = () => {
     if((currentIndex - 1) >= 0) {
-    setCurrentCard(userInfo[currentIndex - 1])
-    setCurrentIndex(currentIndex - 1)
+      setCurrentCard(userInfo[currentIndex - 1])
+      setCurrentIndex(currentIndex - 1)
     }
   }
 
@@ -111,7 +111,7 @@ function App() {
       <section className="carousel-and-btns">
       <button className="prev" onClick={() => handlePrevClick()}>{'<'}</button>
       {currentCard && !isLoading && <Carousel currentCard={currentCard} color={colorCode}/>}
-      {isLoading && 'Loading...'}
+      {isLoading && 'Loading more users...'}
       {userInfoError && `${userInfoError}`}
       <button className="next" onClick={(e) => handleNextClick(e)}>{'>'}</button>
       </section>
