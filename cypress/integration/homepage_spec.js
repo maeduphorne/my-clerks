@@ -213,4 +213,14 @@ describe('Main Page Render', () => {
       cy.get('.color-dropdown').select('Orange')
     })
   
+    it('Should be able to navigate profile cards using the buttons', () => {
+      cy.get('.next').click().click()
+      cy.get('.profile-card').should('be.visible')
+      cy.get('h2').should('be.visible').contains('Funs')
+      cy.get('h3').should('be.visible').contains('Netherlands')
+      cy.get('.prev').click()
+      cy.get('.profile-card').should('be.visible')
+      cy.get('h2').should('be.visible').contains('Carl')
+      cy.get('h3').should('be.visible').contains('Ireland')
+    })
 })
