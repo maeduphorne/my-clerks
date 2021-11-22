@@ -110,17 +110,17 @@ function App() {
   }, [selectedColor])
 
 // Create Adaptive Component to update card display on page resize
-  const AdaptiveComponent = ({ width }) => {
-    const [screenSize, setScreenSize] = useState('mobile');
+  // const AdaptiveComponent = ({ width }) => {
+  //   const [screenSize, setScreenSize] = useState('mobile');
   
-    useEffect(() => {
-      setScreenSize(width < 768 ? 'mobile' : 'desktop');
-    }, [width]);
+  //   useEffect(() => {
+  //     setScreenSize(width < 768 ? 'mobile' : 'desktop');
+  //   }, [width]);
   
-    return <Carousel carouselStyle={screenSize} currentCard={currentCard} color={colorCode}/>
-  };
+  //   return <Carousel carouselStyle={screenSize} currentCard={currentCard} color={colorCode}/>
+  // };
   
-  const AdaptiveWithDetector = withResizeDetector(AdaptiveComponent);
+  // const AdaptiveWithDetector = withResizeDetector(AdaptiveComponent);
 
   return (
     <div className="App">
@@ -128,12 +128,12 @@ function App() {
       <ColorSelector colors={colors} selectedColor={selectedColor} handleColorSelection={handleColorSelection}/>
       <section className="carousel-and-btns">
       <button className="prev" onClick={() => handlePrevClick()}>{'<'}</button>
-      {/* {currentCard && !isLoading && <Carousel currentCard={currentCard} color={colorCode}/>} */}
+      {currentCard && !isLoading && <Carousel currentCard={currentCard} color={colorCode}/>}
       {isLoading && 'Loading more users...'}
       {userInfoError && `${userInfoError}`}
       <button className="next" onClick={(e) => handleNextClick(e)}>{'>'}</button>
       </section>
-      {currentCard && !isLoading && <AdaptiveWithDetector currentCard={currentCard} color={colorCode}/>}
+      {/* {currentCard && !isLoading && <AdaptiveWithDetector currentCard={currentCard} color={colorCode}/>} */}
     </div>
   );
 }
