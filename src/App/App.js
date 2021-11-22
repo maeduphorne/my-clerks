@@ -79,8 +79,10 @@ function App() {
   }
 
   const handlePrevClick = () => {
+    if((currentIndex - 1) >= 0) {
     setCurrentCard(userInfo[currentIndex - 1])
     setCurrentIndex(currentIndex - 1)
+    }
   }
 
   const handleColorSelection = (color) => {
