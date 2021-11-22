@@ -1,8 +1,9 @@
 import './App.css';
-import { fetchRandomUser, fetchRandomUsers } from '../apiCalls'
+import { fetchRandomUsers } from '../apiCalls'
 import React, { useEffect, useState } from 'react'
 import Carousel from '../Carousel/Carousel';
 import ColorSelector from '../ColorSelector/ColorSelector';
+import ResizeObserver from 'react-resize-detector';
 
 function App() {
 
