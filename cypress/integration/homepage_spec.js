@@ -204,10 +204,13 @@ describe('Main Page Render', () => {
       cy.get('.profile-card > :nth-child(5)').should('be.visible').contains('66101554')
       })
       
-      it('Should display two navigation buttons on load', () => {
-        cy.get('.prev').should('be.visible')
-        cy.get('.next').should('be.visible')
-      })
+    it('Should display two navigation buttons on load', () => {
+      cy.get('.prev').should('be.visible')
+      cy.get('.next').should('be.visible')
+    })
   
-    
+    it('Should be able to select a color using the dropdown menu', () => {
+      cy.get('.color-dropdown').select('Orange')
+    })
+  
 })
