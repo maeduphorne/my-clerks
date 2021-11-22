@@ -2,6 +2,7 @@ import './App.css';
 import { fetchRandomUser, fetchRandomUsers } from '../apiCalls'
 import React, { useEffect, useState } from 'react'
 import Carousel from '../Carousel/Carousel';
+import ColorSelector from '../ColorSelector/ColorSelector';
 
 function App() {
 
@@ -10,7 +11,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentCard, setCurrentCard] = useState({})
-  const [selectedColor, setSelectedColor] = useState({})
+  const [selectedColor, setSelectedColor] = useState(//if there is something in localStorgae, grab it...if not set to grey)
+  )
 
   // Original fetch call for 3 users
   useEffect(() => {
@@ -100,10 +102,12 @@ function App() {
   return (
     <div className="App">
       <h1>My Clerks</h1>
+      <ColorSelector colors={colors} selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
       <section className="carousel-and-btns">
       <button className="prev" onClick={() => handlePrevClick()}>{'<'}</button>
       {currentCard && !isLoading && <Carousel currentCard={currentCard} />}
       {isLoading && 'Loading...'}
+      {userInfoError && `${userInfoError}`}
       <button className="next" onClick={(e) => handleNextClick(e)}>{'>'}</button>
       </section>
     </div>

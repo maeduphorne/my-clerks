@@ -1,6 +1,6 @@
 import './ColorSelector.css'
 
-const ColorSelector = () => {
+const ColorSelector = ({ colors, selectedColor, setSelectedColor }) => {
 
 }
 
