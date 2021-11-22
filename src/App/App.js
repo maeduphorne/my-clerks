@@ -101,10 +101,10 @@ function App() {
     <div className="App">
       <h1>My Clerks</h1>
       <section className="carousel-and-btns">
-      <button className="prev" onClick={() => handlePrevClick()}>PREV</button>
+      <button className="prev" onClick={() => handlePrevClick()}>{'<'}</button>
       {currentCard && !isLoading && <Carousel currentCard={currentCard} />}
       {isLoading && 'Loading...'}
-      <button className="next" onClick={(e) => handleNextClick(e)}>NEXT</button>
+      <button className="next" onClick={(e) => handleNextClick(e)}>{'>'}</button>
       </section>
     </div>
   );
