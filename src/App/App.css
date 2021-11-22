@@ -1,0 +1,23 @@
+button {
+  border: none;
+  height: 40px;
+}
+
+.App {
+  text-align: center;
+}
+
+.carousel-and-btns {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.next {
+  margin-right: 2%;
+}
+
+.prev {
+  margin-left: 2%;
+}
+
