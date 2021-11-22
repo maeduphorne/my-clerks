@@ -8,7 +8,14 @@ const ColorSelector = ({ colors, selectedColor, setSelectedColor }) => {
       </option> 
     )
   })
-  
+
+  return (
+    <form className="color-selector">
+      <select className="color-dropdown" onChange={(e) => setSelectedColor(e.target.value)}>
+        options={colorNames} 
+      </select>
+    </form>
+  )
 }
 
 export default ColorSelector;
