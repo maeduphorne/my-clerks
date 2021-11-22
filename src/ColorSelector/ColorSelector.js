@@ -12,6 +12,9 @@ const ColorSelector = ({ colors, selectedColor, handleColorSelection }) => {
   return (
     <form className="color-selector">
       <select className="color-dropdown" onChange={(e) => handleColorSelection(e.target.value)}>
+        <option value=''>
+          {selectedColor}
+        </option>
         options={colorNames} 
       </select>
     </form>
