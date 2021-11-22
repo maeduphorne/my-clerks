@@ -63,19 +63,18 @@ function App() {
     .catch(error => setUserInfoError('Unable to find a user. Please refresh the page or try again later.'))
   }
 
-  //BUTTONS
-  // when userInfo changes, set the current card to the currentIndex of the array 
   useEffect(() => {
     setCurrentCard(userInfo[currentIndex])
-  }, [userInfo, !isLoading])
+  }, [userInfo])
 
-  const handleNextClick = () => {
-    setCurrentIndex(currentIndex + 1)
-    if(userInfo.length <= currentIndex){
+  const handleNextClick = (e) => {
+    e.preventDefault()
+    if(userInfo.length === currentIndex + 1){
       getMoreUserInfo()
-      setCurrentCard(userInfo[currentIndex])
     }
-    setCurrentCard(userInfo[currentIndex])
+    setCurrentCard(userInfo[currentIndex + 1])
+    setCurrentIndex(currentIndex + 1)
+    
   //NEXT BTN function 
   // carousel index - starts at 0 on initial page load
   // with each click of the next button, 1 is added to the index
@@ -85,8 +84,8 @@ function App() {
   }
 
   const handlePrevClick = () => {
+    setCurrentCard(userInfo[currentIndex - 1])
     setCurrentIndex(currentIndex - 1)
-    setCurrentCard(userInfo[currentIndex])
   }
 
   const colors = [
@@ -96,7 +95,7 @@ function App() {
     {name: 'Red', hex: '#E4572E', id: 4},
     {name: 'Purple', hex: '#B497D6', id: 5},
   ]
-  
+
   return (
     <div className="App">
       <h1>My Clerks</h1>
@@ -104,7 +103,7 @@ function App() {
       <button className="prev" onClick={() => handlePrevClick()}>PREV</button>
       {currentCard && !isLoading && <Carousel currentCard={currentCard} />}
       {isLoading && 'Loading...'}
-      <button className="next" onClick={() => handleNextClick()}>NEXT</button>
+      <button className="next" onClick={(e) => handleNextClick(e)}>NEXT</button>
       </section>
     </div>
   );
