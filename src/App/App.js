@@ -12,7 +12,7 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentCard, setCurrentCard] = useState({})
   const [selectedColor, setSelectedColor] = useState(localStorage.getItem('color') || 'Grey')
-
+  const [colorCode, setColorCode] = useState('')
 
   // Original fetch call for 3 users
   useEffect(() => {
@@ -97,13 +97,18 @@ function App() {
     {name: 'Purple', color: '#B497D6', id: 5},
   ]
 
+  useEffect(() => {
+    const colorCode = colors.filter(color => color.name == selectedColor).map(color => color.color)
+    setColorCode(colorCode[0])
+  }, [selectedColor])
+
   return (
     <div className="App">
       <h1>My Clerks</h1>
       <ColorSelector colors={colors} selectedColor={selectedColor} handleColorSelection={handleColorSelection}/>
       <section className="carousel-and-btns">
       <button className="prev" onClick={() => handlePrevClick()}>{'<'}</button>
-      {currentCard && !isLoading && <Carousel currentCard={currentCard} color={selectedColor}/>}
+      {currentCard && !isLoading && <Carousel currentCard={currentCard} color={colorCode}/>}
       {isLoading && 'Loading...'}
       {userInfoError && `${userInfoError}`}
       <button className="next" onClick={(e) => handleNextClick(e)}>{'>'}</button>
