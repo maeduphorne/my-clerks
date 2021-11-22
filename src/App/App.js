@@ -11,8 +11,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentCard, setCurrentCard] = useState({})
-  const [selectedColor, setSelectedColor] = useState(//if there is something in localStorgae, grab it...if not set to grey)
-  )
+  const [selectedColor, setSelectedColor] = useState(localStorage.getItem('color') || 'Grey')
+
 
   // Original fetch call for 3 users
   useEffect(() => {
@@ -76,18 +76,16 @@ function App() {
     }
     setCurrentCard(userInfo[currentIndex + 1])
     setCurrentIndex(currentIndex + 1)
-    
-  //NEXT BTN function 
-  // carousel index - starts at 0 on initial page load
-  // with each click of the next button, 1 is added to the index
-  // display card at current index
-  // if at the end of the userInfo array, fetch more users
-  // return to view of card at previous index
   }
 
   const handlePrevClick = () => {
     setCurrentCard(userInfo[currentIndex - 1])
     setCurrentIndex(currentIndex - 1)
+  }
+
+  const handleColorSelection = (color) => {
+    setSelectedColor(color)
+    localStorage.setItem('color', color)
   }
 
   const colors = [
@@ -102,7 +100,7 @@ function App() {
   return (
     <div className="App">
       <h1>My Clerks</h1>
-      <ColorSelector colors={colors} selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
+      <ColorSelector colors={colors} selectedColor={selectedColor} handleColorSelection={handleColorSelection}/>
       <section className="carousel-and-btns">
       <button className="prev" onClick={() => handlePrevClick()}>{'<'}</button>
       {currentCard && !isLoading && <Carousel currentCard={currentCard} color={selectedColor}/>}
