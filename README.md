@@ -22,7 +22,9 @@ The My Clerks app displays random user profiles to the user by scrolling through
   + Run `npm run cypress` to test Cypress
   
 ## Examples
-!(App)[https://media.giphy.com/media/akEdtk5IwYmOenckeB/giphy.gif]
+<img width="311" alt="Screen Shot 2021-11-22 at 11 53 44 AM" src="https://user-images.githubusercontent.com/63213406/142919125-05011e01-c768-4ccd-a596-0720e382437b.png">
+<img width="313" alt="Screen Shot 2021-11-22 at 11 54 00 AM" src="https://user-images.githubusercontent.com/63213406/142919132-d2bbd99a-984b-4377-9b31-1a223a129016.png">
+
 
 ### Using The App
   _**- To use the App, a user is able to:**_
