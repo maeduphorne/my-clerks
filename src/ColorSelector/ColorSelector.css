@@ -1,0 +1,9 @@
+.color-dropdown {
+    margin-bottom: 1em;
+    padding: .25em;
+    height: 4vh;
+    border: 0;
+    border-bottom: 2px solid black; 
+    letter-spacing: .15em;
+    border-radius: 0;
+}
