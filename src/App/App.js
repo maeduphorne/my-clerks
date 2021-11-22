@@ -105,7 +105,7 @@ function App() {
       <ColorSelector colors={colors} selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
       <section className="carousel-and-btns">
       <button className="prev" onClick={() => handlePrevClick()}>{'<'}</button>
-      {currentCard && !isLoading && <Carousel currentCard={currentCard} />}
+      {currentCard && !isLoading && <Carousel currentCard={currentCard} color={selectedColor}/>}
       {isLoading && 'Loading...'}
       {userInfoError && `${userInfoError}`}
       <button className="next" onClick={(e) => handleNextClick(e)}>{'>'}</button>

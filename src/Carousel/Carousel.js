@@ -2,7 +2,7 @@ import './Carousel.css'
 import UserProfileCard from '../UserProfileCard/UserProfileCard'
 import { useState, useEffect } from 'react';
 
-const Carousel = ({ currentCard }) => {
+const Carousel = ({ currentCard, color }) => {
   // const cards = currentCard.map((info) => {
   //   return (
   //     <UserProfileCard key={info.id} userInfo={info}/>
@@ -11,7 +11,7 @@ const Carousel = ({ currentCard }) => {
 
   return(
     <section className="carousel">
-      <UserProfileCard key={currentCard.id} userInfo={currentCard}/>
+      <UserProfileCard key={currentCard.id} userInfo={currentCard} color={color}/>
     </section>
   )
 
