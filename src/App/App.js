@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import Carousel from '../Carousel/Carousel';
 import ColorSelector from '../ColorSelector/ColorSelector';
 import ResizeObserver from 'react-resize-detector';
+import { withResizeDetector } from 'react-resize-detector';
+
 
 function App() {
 
@@ -15,6 +17,7 @@ function App() {
   const [selectedColor, setSelectedColor] = useState(localStorage.getItem('color') || 'Grey')
   const [colorCode, setColorCode] = useState('')
 
+  
   // Original fetch call for 3 users
   useEffect(() => {
     let userData;
@@ -86,6 +89,7 @@ function App() {
     }
   }
 
+  // Handle and store color scheme changes
   const handleColorSelection = (color) => {
     setSelectedColor(color)
     localStorage.setItem('color', color)
@@ -105,17 +109,31 @@ function App() {
     setColorCode(colorCode[0])
   }, [selectedColor])
 
+// Create Adaptive Component to update card display on page resize
+  const AdaptiveComponent = ({ width }) => {
+    const [screenSize, setScreenSize] = useState('mobile');
+  
+    useEffect(() => {
+      setScreenSize(width < 768 ? 'mobile' : 'desktop');
+    }, [width]);
+  
+    return <Carousel carouselStyle={screenSize} currentCard={currentCard} color={colorCode}/>
+  };
+  
+  const AdaptiveWithDetector = withResizeDetector(AdaptiveComponent);
+
   return (
     <div className="App">
       <h1>My Clerks</h1>
       <ColorSelector colors={colors} selectedColor={selectedColor} handleColorSelection={handleColorSelection}/>
       <section className="carousel-and-btns">
       <button className="prev" onClick={() => handlePrevClick()}>{'<'}</button>
-      {currentCard && !isLoading && <Carousel currentCard={currentCard} color={colorCode}/>}
+      {/* {currentCard && !isLoading && <Carousel currentCard={currentCard} color={colorCode}/>} */}
       {isLoading && 'Loading more users...'}
       {userInfoError && `${userInfoError}`}
       <button className="next" onClick={(e) => handleNextClick(e)}>{'>'}</button>
       </section>
+      {currentCard && !isLoading && <AdaptiveWithDetector currentCard={currentCard} color={colorCode}/>}
     </div>
   );
 }
