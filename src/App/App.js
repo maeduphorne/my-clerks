@@ -3,9 +3,6 @@ import { fetchRandomUsers } from '../apiCalls'
 import React, { useEffect, useState } from 'react'
 import Carousel from '../Carousel/Carousel';
 import ColorSelector from '../ColorSelector/ColorSelector';
-import ResizeObserver from 'react-resize-detector';
-import { withResizeDetector } from 'react-resize-detector';
-
 
 function App() {
 
@@ -109,18 +106,6 @@ function App() {
     setColorCode(colorCode[0])
   }, [selectedColor])
 
-// Create Adaptive Component to update card display on page resize
-  // const AdaptiveComponent = ({ width }) => {
-  //   const [screenSize, setScreenSize] = useState('mobile');
-  
-  //   useEffect(() => {
-  //     setScreenSize(width < 768 ? 'mobile' : 'desktop');
-  //   }, [width]);
-  
-  //   return <Carousel carouselStyle={screenSize} currentCard={currentCard} color={colorCode}/>
-  // };
-  
-  // const AdaptiveWithDetector = withResizeDetector(AdaptiveComponent);
 
   return (
     <div className="App">
@@ -133,7 +118,6 @@ function App() {
       {userInfoError && `${userInfoError}`}
       <button className="next" onClick={(e) => handleNextClick(e)}>{'>'}</button>
       </section>
-      {/* {currentCard && !isLoading && <AdaptiveWithDetector currentCard={currentCard} color={colorCode}/>} */}
     </div>
   );
 }
