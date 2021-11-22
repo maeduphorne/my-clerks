@@ -1,6 +1,6 @@
 import './ColorSelector.css'
 
-const ColorSelector = ({ colors, selectedColor, setSelectedColor }) => {
+const ColorSelector = ({ colors, selectedColor, handleColorSelection }) => {
   const colorNames = colors.map(color => {
     return (
       <option key={color.id}>
@@ -11,7 +11,7 @@ const ColorSelector = ({ colors, selectedColor, setSelectedColor }) => {
 
   return (
     <form className="color-selector">
-      <select className="color-dropdown" onChange={(e) => setSelectedColor(e.target.value)}>
+      <select className="color-dropdown" onChange={(e) => handleColorSelection(e.target.value)}>
         options={colorNames} 
       </select>
     </form>
