@@ -1,4 +1,8 @@
 .profile-card {
-  border: 2px solid black;
-  background-color: blanchedalmond;
+  display: flex;
+  flex-direction: column;
+  background-color: #C0C0C0;
+  padding: 5%;
+  overflow: hidden;
+  overflow-wrap: break-word;
 }

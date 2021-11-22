@@ -89,11 +89,12 @@ function App() {
   }
 
   const colors = [
-    {name: 'Navy', hex: '#29335C', id: 1}, 
-    {name: 'Green', hex: '#A8C686', id: 2},
-    {name: 'Orange', hex: '#F3A712', id: 3},
-    {name: 'Red', hex: '#E4572E', id: 4},
-    {name: 'Purple', hex: '#B497D6', id: 5},
+    {name: 'Grey', color: '#71797E', id: 0},
+    {name: 'Navy', color: '#29335C', id: 1}, 
+    {name: 'Green', color: '#A8C686', id: 2},
+    {name: 'Orange', color: '#F3A712', id: 3},
+    {name: 'Red', color: '#E4572E', id: 4},
+    {name: 'Purple', color: '#B497D6', id: 5},
   ]
 
   return (
