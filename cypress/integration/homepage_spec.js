@@ -189,4 +189,20 @@ describe('Main Page Render', () => {
     it('Should have a header with the App\'s name on page load', () => {
       cy.get('h1').contains('My Clerks')
     })
+
+    it('Should display a drop down menu on load', () => {
+      cy.get('.color-dropdown')
+          .should('be.visible')
+          .contains('option')
+      })
+
+    it('Should display a user card on load', () => {
+      cy.get('.profile-card').should('be.visible')
+      cy.get('h2').should('be.visible').contains('Fredrikke')
+      cy.get('h3').should('be.visible').contains('Norway')
+      cy.get('.profile-card > :nth-child(4)').should('be.visible').contains('fredrikke.slatten@example.com')
+      cy.get('.profile-card > :nth-child(5)').should('be.visible').contains('66101554')
+      })
+
+    
 })
