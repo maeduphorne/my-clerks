@@ -10,7 +10,6 @@
 + [Future features](#future-features)
 + [Technologies used](#technologies-used)
 + [Contributors](#contributors)
-+ [Reflections & Wins](#reflections-and-wins)
 
 ## Overview
 The My Clerks app displays random user profiles to the user by scrolling through up to 100 profile cards. A user is also able to change the color scheme of the cards by using a drop down menu. The color persists on refresh of the page.
@@ -22,9 +21,7 @@ The My Clerks app displays random user profiles to the user by scrolling through
   + Run `npm run cypress` to test Cypress
   
 ## Examples
-<img width="311" alt="Screen Shot 2021-11-22 at 11 53 44 AM" src="https://user-images.githubusercontent.com/63213406/142919125-05011e01-c768-4ccd-a596-0720e382437b.png">
-<img width="313" alt="Screen Shot 2021-11-22 at 11 54 00 AM" src="https://user-images.githubusercontent.com/63213406/142919132-d2bbd99a-984b-4377-9b31-1a223a129016.png">
-
+![recording (8)](https://user-images.githubusercontent.com/63213406/142920511-4b419cd5-e07c-4944-898e-32a03653130a.gif)
 
 ### Using The App
   _**- To use the App, a user is able to:**_
@@ -57,10 +54,10 @@ The My Clerks app displays random user profiles to the user by scrolling through
 
 ## Future features
   - _This App was such a fun experience to work with! I have many ideas on how it could be expanded in the future._
-  - I was unable to complete the responsiveness to display 3 users at once. In order to do so, I would like to use a conditional based on the size of the window that displays the mobile view logic (what is currently working on the app) OR the desktop logic (future feature)
+  - Next steps: complete the responsiveness to display 3 users at once. In order to do so, I would like to use a conditional based on the size of the window that displays the mobile view logic (what is currently working on the app) OR the desktop logic (future feature)
   - _For the desktop display logic, the currentCard state would have to be an array of 3 cards instead of a single card. This could be set using the index logic, but using a .slice() method to create a new array of the current index and the following 2 cards. Instead of conditionally fetching an additional 3 users upon click of the "next" button, each click would automatically fetch the next 3 users. The previous button would navigate back to the previous 3 users._
    
-   Other future features:
+   Additional future features:
    - Using Global State Management to manage state throughout the app
    - Separating App logic into more components
    - Storing userInfo using localStorage, so that users can return to the previous userInfo
@@ -81,9 +78,4 @@ The My Clerks app displays random user profiles to the user by scrolling through
   
 ## Contributors
   + [Mae Duphorne](https://github.com/maeduphorne)
-  
-## Reflections And Wins
-  - Although it is only currently in mobile view, I am proud of the functionality of the carousel. The user experience is seemless in navigating the slides and when there is a pause while the fetch is loading, the user can see a loading message. This is the first time I have made something like this and feel that the functionality is a success overall!
-  - I think the use of localStorage in the color scheme was a simple, but successful idea. The color color change is easy for the user and persists well on page load.
-
 
